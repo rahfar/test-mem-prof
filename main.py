@@ -14,6 +14,7 @@ def predict(input_data):
     prediction = model.predict(input_data)
     return prediction
 
+
 @profile
 @app.post("/predict")
 async def predict_handler():
@@ -21,8 +22,6 @@ async def predict_handler():
     input_data = np.random.rand(1, 784)
     # Call the memory-intensive prediction function
     prediction = predict(input_data)
-    b = [2] * (2 * 10 ** 7)
-    del b
     return {"prediction": prediction.tolist()}
 
 
